@@ -3,11 +3,9 @@
 Based on [this](https://www.a1k0n.net/2011/07/20/donut-math.html) by Andy Sloane.
 Done with cursor and chatgpt.
 
-## Compile
+## Donut
 
 `gcc -o donut donut.c -std=c89 -lm`
-
-## Run
 
 `./donut`
 
