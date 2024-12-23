@@ -19,17 +19,10 @@ int main() {
     float z[buffer_size];
     int k;
 
-    // Offsets (centers) and directions for Donut #1
-    float x_offset1 = -screen_width / 4.0f;  // Start on the left side
-    float y_offset1 = -screen_height / 4.0f; // Start at the top
-    float x_direction1 = 0.4f;  // Increase this value for faster horizontal movement
-    float y_direction1 = 0.4f;  // Increase this value for faster vertical movement
-
-    // Offsets (centers) and directions for Donut #2
-    float x_offset2 = screen_width / 4.0f;   // Start on the right side
-    float y_offset2 = screen_height / 4.0f;  // Start at the bottom
-    float x_direction2 = 0.6f;  // Increase this value for faster horizontal movement
-    float y_direction2 = 0.3f;  // Increase this value for faster vertical movement
+    float x_offset = 0;
+    float y_offset = 0;
+    float x_direction = 0.26;
+    float y_direction = 0.26;
 
     int frame_count = 0;
 
@@ -55,8 +48,8 @@ int main() {
                 float n = sinf(B);
                 float t = c * h * g - f * e;
 
-                int x = (int)(screen_width / 2 + screen_width * x_scale * D * (l * h * m - t * n)) + x_offset1;
-                int y = (int)(screen_height / 2 + screen_height * y_scale * D * (l * h * n + t * m)) + y_offset1;
+                int x = (int)(screen_width / 2 + screen_width * x_scale * D * (l * h * m - t * n)) + x_offset;
+                int y = (int)(screen_height / 2 + screen_height * y_scale * D * (l * h * n + t * m)) + y_offset;
                 int o = x + screen_width * y;
 
                 int N = (int)(8 * ((f * e - c * d * g) * m - c * d * e - f * g - l * d * n));
@@ -79,14 +72,14 @@ int main() {
         frame_count++;
 
         if (frame_count % 5 == 0) {
-            x_offset1 += x_direction1;
-            y_offset1 += y_direction1;
+            x_offset += x_direction;
+            y_offset += y_direction;
 
-            if (x_offset1 < -screen_width / 4 || x_offset1 > screen_width / 4) {
-                x_direction1 = -x_direction1;
+            if (x_offset < -screen_width / 4 || x_offset > screen_width / 4) {
+                x_direction = -x_direction;
             }
-            if (y_offset1 < -screen_height / 4 || y_offset1 > screen_height / 4) {
-                y_direction1 = -y_direction1;
+            if (y_offset < -screen_height / 4 || y_offset > screen_height / 4) {
+                y_direction = -y_direction;
             }
         }
     }
